@@ -31,6 +31,7 @@ h1
 
 .content
 {
+    height: 100vh;
     background-color: white;
     margin-left: 25%;
     margin-right: 25%;
