@@ -7,6 +7,17 @@ html {
     height: 100%;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+  }
+  
+  /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+    padding-top: 100px;
+}
+
 body {
     min-height: 100%;
     display: flex;
@@ -43,11 +54,9 @@ hr {
 }
 
 .content {
-    /* height: 100vh; */
     background-color: white;
     margin-left: 25%;
     margin-right: 25%;
-    padding-top: 45px;
     padding-bottom: 45px;
     padding-left: 20px;
     padding-right: 20px;
@@ -58,19 +67,24 @@ hr {
     overflow: hidden;
 }
 
-.navbar a {
+.nav-element-container{
+    height: fit-content;
     float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
+    margin-top: 20px;
 }
 
-.navbar a.navbar-title
+.navbar a {
+    /* float: left; */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 2vw;
+}
+
+.navbar-title
 {
     font-family: Helvetica, sans-serif;
-    font-size: 35px;
+    font-size: 2vw;
 }
 
 .navbar a:hover {
@@ -83,8 +97,9 @@ hr {
     color: white;
 }
 
-.navbar .search-container {
+.search-container {
     float: right;
+    margin-top: 10px;
 }
   
 .navbar input[type=text] {
@@ -103,10 +118,6 @@ hr {
     font-size: 17px;
     border: none;
     cursor: pointer;
-}
-
-  .topnav .search-container button:hover {
-    background: #ccc;
 }
 
 @media screen and (max-width: 600px) {
