@@ -5,14 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Future Funk Central</title>
-    <link href="styleSheet.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link href="../styleSheet.css" rel="stylesheet">
+    
     <style>
         body
         {
-            /*https://i.pinimg.com/originals/f9/59/b7/f959b7546faa70547a368c571f4f7d09.jpg*/
             background-image: url(./Images/Homepage-Background.jpg);
         }
         
@@ -25,48 +22,24 @@
             text-align: left;
         }
     </style>
+
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+    </script>
+
+    <script> 
+        $(function(){
+            $("#header").load("/WebsiteComponents/header.html"); 
+            $("#footer").load("/WebsiteComponents/footer.html"); 
+        });
+    </script> 
 </head>
 
 <body>
-    <header class="sticky">
-        <div class="navbar">
-            <span class="nav-element-container" id="navbar-title-container">
-                <a id="navbar-title" href="index.html"><b>FUTURE FUNK CENTRΛL</b></a>
-            </span>
+    <div id="header"></div>
 
-            <span class="nav-element-container">
-                <a class="active" href="#home">Home</a>
-            </span>
-
-            <span class="nav-element-container">
-                <a href="#browse">Browse</a>
-            </span>
-
-            <span class="nav-element-container">
-                <a href="#recordLabels">Labels</a>
-            </span>
-
-            <span class="nav-element-container">
-                <a href="#communityLinks">Community Links</a>
-            </span>
-
-            <span class="nav-element-container">
-                <a href="#playlist">Playlist</a>
-            </span>
-
-            <span class="nav-element-container">
-                <a href="#history">History</a>
-            </span>
-            
-            <span class="search-container">
-                <form action="/placeholder_page">
-                  <input type="text" placeholder="Search Song or Artist.." name="search">
-                  <button type="submit"><img style="width: 17px; height: 17px;" src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg" alt="mg"></button>
-                </form>
-            </span>
-        </div>
-    </header>
-    
     <div class = "content">
         <div>
             <h1><u>Welcome To Future Funk Central!</u></h1>
@@ -137,12 +110,7 @@
 
     </div>
 
-    <footer>
-        <div>
-            <p>© 2024, FutureFunkCentral.com - Website by Nicholas Junkas</p>
-        </div>
-    </footer>
-
+    <div id="footer"></div>
 </body>
 
 
