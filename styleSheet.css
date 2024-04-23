@@ -26,7 +26,8 @@ body {
 
 footer {
     text-align: center;
-    background-color: white;
+    background-color: #333;
+    color: white;
     margin-top: auto;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -67,22 +68,25 @@ hr {
     overflow: hidden;
 }
 
-.nav-element-container{
-    height: fit-content;
+.nav-element-container {
     float: left;
-    margin-top: 20px;
+    display: grid;
 }
 
 .navbar a {
-    /* float: left; */
     color: white;
     text-align: center;
     text-decoration: none;
-    padding: 2vw;
+    padding: 1.5vw;
 }
 
-.navbar-title
-{
+#navbar-title-container{
+    width: 30%;
+    /* setting a height would fix this, but it must be auto */
+    line-height: 19px;
+}
+
+#navbar-title {
     font-family: Helvetica, sans-serif;
     font-size: 2vw;
 }
@@ -100,6 +104,7 @@ hr {
 .search-container {
     float: right;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
   
 .navbar input[type=text] {
@@ -118,21 +123,4 @@ hr {
     font-size: 17px;
     border: none;
     cursor: pointer;
-}
-
-@media screen and (max-width: 600px) {
-    .topnav .search-container {
-      float: none;
-    }
-    .topnav a, .topnav input[type=text], .topnav .search-container button {
-      float: none;
-      display: block;
-      text-align: left;
-      width: 100%;
-      margin: 0;
-      padding: 14px;
-    }
-    .topnav input[type=text] {
-      border: 1px solid #ccc;  
-    }
 }
