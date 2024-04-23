@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+body {
+    background-color: #613a69;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    background-color: white;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-bottom: 45px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.spacer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+iframe{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
