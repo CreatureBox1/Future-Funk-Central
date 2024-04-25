@@ -13,12 +13,15 @@ h1, h2, h3 {
     text-align: center;
 }
 
-
 body {
     background-color: #613a69;
     min-height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+#header{
+z-index: 99;
 }
 
 .content {
@@ -30,7 +33,12 @@ body {
     padding-right: 20px;
 }
 
-.spacer {
+.spacerSmall {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.spacerLarge {
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -39,4 +47,46 @@ iframe{
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.centeredElement{
+    text-align: center;
+}
+
+.grid{
+    --gap: 2rem;
+    --line-offset: calc(var(--gap) / 2);
+    --line-thickness: 2px;
+    --line-color: black;
+    --grid-columns: 4;
+
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    overflow: hidden;
+    gap: var(--gap);
+}
+
+.gridItem {
+    position: relative;
+ }
+
+ .gridItem::before, 
+ .gridItem::after {
+   content: '';
+   position: absolute;
+   background-color: var(--line-color);
+}
+
+.gridItem::after {
+  inline-size: 100vw;
+  block-size: var(--line-thickness);
+  inset-inline-start: 0;
+  inset-block-start: calc(var(--line-offset) * -1);
+}
+
+/* Grid Column Borders */
+.gridItem::before {
+  inline-size: var(--line-thickness);
+  block-size: 100vh;
+  inset-inline-start: calc(var(--line-offset) * -1);
 }
