@@ -20,7 +20,10 @@
             </span>
 
             <span class="nav-element-container">
-                <a href="http://localhost:8080/browse.html">Browse</a>
+                <form style="display: inline-flex;" action="/browse" method="post">
+                    <input type="hidden" name="name" value="value"/> 
+                    <a style="cursor: pointer;" onclick="this.parentNode.submit();">Browse</a>
+                </form>
             </span>
 
             <span class="nav-element-container">
@@ -45,7 +48,7 @@
                   <button type="submit"><img style="width: 17px; height: 17px;" src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg" alt="mg"></button>
                 </form> -->
 
-                <form action="/browse" method="get">
+                <form action="/browse" method="post">
                     <table style="border: 0; display: inline;">
                         <tbody>
                             <tr>

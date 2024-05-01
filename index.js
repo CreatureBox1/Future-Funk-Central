@@ -42,6 +42,7 @@ server.post("/browse", (req, res)=>{
         // const songResults = ;
         // const artistResults = ;
         // res.render("browse", {songs: songResults, artists:artistResults});
+        res.render("browse");
     } 
     catch (err) {
         console.log(err);
