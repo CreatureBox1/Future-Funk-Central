@@ -19,6 +19,12 @@
             $("#footer").load("https://creaturebox1.github.io/Future-Funk-Central/WebsiteComponents/footer.html"); 
         });
     </script>
+
+    <style>
+        li{
+            padding-bottom: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,7 +35,28 @@
 
         <h1>BROWSE</h1>
 
-        
+        <div class="centeredElement">
+            <form action="" method="get">
+                Artist: <input class="dbform" type="text" name="a" size="23" value=""> 
+                Song: <input class="dbform" type="text" name="t" size="23" value=""> 
+                <input class="dbform3" type="submit" value="Search">
+            </form>
+
+            <div class="spacerSmall"></div>
+
+            <div>
+                <p id="resultCounterText"><b>0 Result(s)</b></p>
+            </div>
+
+            <div class="spacerSmall"></div>
+        </div>
+
+        <div style="margin-left: 20%; margin-right: auto;">
+            <ul id="searchResultList">
+                <!-- <li><a href="">Test</a></li> -->
+            </ul>
+        </div>
+
     </div>
 
     <div id="footer"></div>
