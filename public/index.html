@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Future Funk Central</title>
-    <link href="http://localhost:8080/css/homeStyleSheet.css" rel="stylesheet">
+    <link href="http://localhost:8080/css/stylesheet.css" rel="stylesheet">
 
     <style>
         body
@@ -30,14 +30,30 @@
     </script>
 
     <script> 
-        $(function(){
-            $("#header").load("http://localhost:8080/components/header.html"); 
+        $(document).ready(function(){
+            $("#header").load("http://localhost:8080/components/header.html", ()=>{
+
+                let links = document.getElementsByTagName('a');
+                let bodyId = document.querySelector("body").id;
+
+                for (let link of links) 
+                {
+                    if (link.getAttribute("name") == bodyId) 
+                    {
+                        link.classList.add("active");
+                        console.log("FOUND!");
+                        test = true;
+                        break;
+                    }
+                }
+            }); 
+            
             $("#footer").load("http://localhost:8080/components/footer.html"); 
         });
     </script> 
 </head>
 
-<body>
+<body id="home">
     <div id="header"></div>
 
     <div class="content">

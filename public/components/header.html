@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Future Funk Central</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="http://localhost:8080/public/css/stylesheet.css" rel="stylesheet">
+    <link href="http://localhost:8080/css/stylesheet.css" rel="stylesheet">
 </head>
 
 <body>
@@ -16,30 +16,30 @@
             </span>
 
             <span class="nav-element-container">
-                <a class="active" href="http://localhost:8080/index.html">Home</a>
+                <a name="home" href="http://localhost:8080/index.html">Home</a>
             </span>
 
             <span class="nav-element-container">
-                <form style="display: inline-flex;" action="/browse" method="post">
+                <form style="display: inline-flex; cursor: pointer;" action="/browse" method="post">
                     <input type="hidden" name="name" value="value"/> 
-                    <a style="cursor: pointer;" onclick="this.parentNode.submit();">Browse</a>
+                    <a name="browse" onclick="this.parentNode.submit();">Browse</a>
                 </form>
             </span>
 
             <span class="nav-element-container">
-                <a href="http://localhost:8080/submission.html">Submit To Database</a>
+                <a name="submission" href="http://localhost:8080/submission.html">Submit To Database</a>
             </span>
 
             <span class="nav-element-container">
-                <a href="http://localhost:8080/communityLinks.html">Community Links</a>
+                <a name="community" href="http://localhost:8080/communityLinks.html">Community Links</a>
             </span>
 
             <span class="nav-element-container">
-                <a href="http://localhost:8080/playlist.html">Playlists</a>
+                <a name="playlists" href="http://localhost:8080/playlist.html">Playlists</a>
             </span>
 
             <span class="nav-element-container">
-                <a href="http://localhost:8080/radio.html">Radios</a>
+                <a name="radios" href="http://localhost:8080/radio.html">Radios</a>
             </span>
             
             <span class="search-container">

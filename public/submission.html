@@ -15,7 +15,23 @@
     
     <script> 
         $(function(){
-            $("#header").load("http://localhost:8080/components/header.html"); 
+            $("#header").load("http://localhost:8080/components/header.html", ()=>{
+
+                let links = document.getElementsByTagName('a');
+                let bodyId = document.querySelector("body").id;
+
+                for (let link of links) 
+                {
+                    if (link.getAttribute("name") == bodyId) 
+                    {
+                        link.classList.add("active");
+                        console.log("FOUND!");
+                        test = true;
+                        break;
+                    }
+                }
+            }); 
+            
             $("#footer").load("http://localhost:8080/components/footer.html"); 
         });
     </script>
@@ -83,7 +99,7 @@
     </style>
 </head>
 
-<body>
+<body id="submission">
     <div id="header"></div>
 
     <div class = "content">
