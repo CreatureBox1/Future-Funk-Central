@@ -19,6 +19,62 @@
             $("#footer").load("https://creaturebox1.github.io/Future-Funk-Central/WebsiteComponents/footer.html"); 
         });
     </script>
+
+    <style>
+        .submissionForm {
+            font: 14px Arial;
+            background-color: #eee;
+            padding: 10px;
+            width: 400px;
+            margin-left: auto;
+            margin-right:auto;
+        }
+
+        .submissionForm h1 {
+            margin-top: 5px;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        #formErrors {
+            color: red;
+        }
+
+        input[type=text], input[type=email], input[type=password] {
+            width: 400px;
+            padding: 8px;
+            margin-top: 4px;
+            margin-bottom: 12px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=text]:focus {
+            background-color: lightblue;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            color: white;
+            background-color: #db75f0;
+            padding: 15px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #6a007f;
+        }
+
+        input.error  {
+            border: 2px solid red;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,11 +83,90 @@
     <div class = "content">
         <div class="spacerSmall"></div>
 
-        <h1>Submit A Song:</h1>
+        <h1>Submit To Future Funk Database</h1>
+
+        <h2>Submit Song:</h2>
         <div class="centeredElement">
-            <form action="" method="get">
-                <input type="submit" value="Submit">
-            </form>
+            <p>Given a song and an artist, you can submit a song to the database. <br> 
+                If you input a song and artist that already exists, the information will be updated.</p>
+            <div class="spacerSmall"></div>
+
+            <form class="submissionForm" action="" method="get">
+                <div>
+                    <label for="submitSongName">Song Name:</label>
+                    <input type="text" id="submitSongName" name="submitSongName" required>
+                </div>
+
+                <div>
+                    <label for="submitSongArtistName">Song Artist:</label>
+                    <input type="text" id="submitSongArtistName" name="submitSongArtistName" required>
+                </div>
+
+                <div>
+                    <label for="submitSongYoutubeURL">Song Youtube URL:</label>
+                    <input type="text" id="submitSongYoutubeURL" name="submitSongYoutubeURL">
+                </div>
+
+                <div id="formErrors"></div>
+                <div id="formSubmissionPrompt"></div>
+    
+                <div>
+                    <input type="submit" value="Submit Song">
+                </div>
+            </form>            
+        </div>
+
+        <div class="spacerSmall"></div>
+
+        <h2>Submit Artist:</h2>
+        <div class="centeredElement">
+            <p>Submit an artist to the database.</p>
+            <div class="spacerSmall"></div>
+
+            <form class="submissionForm" action="" method="get">
+                <div>
+                    <label for="submitArtistName">Artist Name:</label>
+                    <input type="text" id="submitArtistName" name="submitArtistName" required>
+                </div>
+
+                <div>
+                    <label for="submitArtistBio">Artist Bio:</label>
+                    <input type="text" id="submitArtistBio" name="submitArtistBio" required>
+                </div>
+
+                <div>
+                    <label for="submitArtistImage">Artist Image URL:</label>
+                    <input type="text" id="submitArtistImage" name="submitArtistImage">
+                </div>
+    
+                <div>
+                    <input type="submit" value="Submit Song">
+                </div>
+            </form>            
+        </div>
+
+        <div class="spacerSmall"></div>
+
+        <h2>Delete Song:</h2>
+        <div class="centeredElement">
+            <p>Given a song and an artist, you can delete the entry from the database.</p>
+            <div class="spacerSmall"></div>
+
+            <form class="submissionForm" action="" method="get">
+                <div>
+                    <label for="deleteSongName">Song Name:</label>
+                    <input type="text" id="deleteSongName" name="deleteSongName" required>
+                </div>
+
+                <div>
+                    <label for="deleteArtistName">Song Artist:</label>
+                    <input type="text" id="deleteArtistName" name="deleteArtistName" required>
+                </div>
+
+                <div>
+                    <input type="submit" value="Delete">
+                </div>
+            </form>            
         </div>
         
     </div>
