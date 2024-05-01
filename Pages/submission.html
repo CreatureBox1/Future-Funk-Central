@@ -20,7 +20,7 @@
         });
     </script>
 
-    <script src="../JS/databaseSubmission.js"></script>
+    <script src="../JS/databaseSubmission.js" defer></script>
 
     <style>
         .submissionForm {
@@ -76,6 +76,10 @@
         input.error  {
             border: 2px solid red;
         }
+
+        ol{
+            display: inline-block;
+        }
     </style>
 </head>
 
@@ -109,11 +113,11 @@
                     <input type="text" id="submitSongYoutubeURL" name="submitSongYoutubeURL">
                 </div>
 
-                <div id="formErrors"></div>
-                <div id="formSubmissionPrompt"></div>
+                <div id="submitSongErrors"></div>
+                <div id="submitSongPrompt"></div>
     
                 <div>
-                    <input type="submit" value="Submit Song">
+                    <input id="addSongSubmit" type="submit" value="Submit Song">
                 </div>
             </form>            
         </div>
@@ -133,16 +137,19 @@
 
                 <div>
                     <label for="submitArtistBio">Artist Bio:</label>
-                    <input type="text" id="submitArtistBio" name="submitArtistBio" required>
+                    <input type="text" id="submitArtistBio" name="submitArtistBio">
                 </div>
 
                 <div>
                     <label for="submitArtistImage">Artist Image URL:</label>
                     <input type="text" id="submitArtistImage" name="submitArtistImage">
                 </div>
+
+                <div id="submitArtistErrors"></div>
+                <div id="submitArtistPrompt"></div>
     
                 <div>
-                    <input type="submit" value="Submit Song">
+                    <input id="addArtistSubmit" type="submit" value="Submit Song">
                 </div>
             </form>            
         </div>
@@ -156,17 +163,42 @@
 
             <form class="submissionForm" action="" method="get">
                 <div>
-                    <label for="deleteSongName">Song Name:</label>
-                    <input type="text" id="deleteSongName" name="deleteSongName" required>
+                    <label for="removeSongName">Song Name:</label>
+                    <input type="text" id="removeSongName" name="removeSongName" required>
                 </div>
 
                 <div>
-                    <label for="deleteArtistName">Song Artist:</label>
-                    <input type="text" id="deleteArtistName" name="deleteArtistName" required>
+                    <label for="removeSongArtistName">Song Artist:</label>
+                    <input type="text" id="removeSongArtistName" name="removeSongArtistName" required>
                 </div>
 
+                <div id="removeSongErrors"></div>
+                <div id="removeSongPrompt"></div>
+
                 <div>
-                    <input type="submit" value="Delete">
+                    <input id="removeSongSubmit" type="submit" value="Delete">
+                </div>
+            </form>            
+        </div>
+
+        <div class="spacerSmall"></div>
+
+        <h2>Delete Artist:</h2>
+        <div class="centeredElement">
+            <p>Delete an artist and all their songs.</p>
+            <div class="spacerSmall"></div>
+
+            <form class="submissionForm" action="" method="get">
+                <div>
+                    <label for="removeArtistName">Artist Name:</label>
+                    <input type="text" id="removeArtistName" name="removeArtistName" required>
+                </div>
+
+                <div id="removeArtistErrors"></div>
+                <div id="removeArtistPrompt"></div>
+
+                <div>
+                    <input id="removeArtistSubmit" type="submit" value="Delete">
                 </div>
             </form>            
         </div>
