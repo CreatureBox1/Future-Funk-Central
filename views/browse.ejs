@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Future Funk Central</title>
-    <link href="https://creaturebox1.github.io/Future-Funk-Central/CSS/pagesContent.css" rel="stylesheet">
+    <link href="http://localhost:8080/css/pagesContent.css" rel="stylesheet">
 
     <script
         src="https://code.jquery.com/jquery-3.3.1.js"
@@ -13,10 +13,10 @@
         crossorigin="anonymous">
     </script>
     
-    <script> 
+    <script>
         $(function(){
-            $("#header").load("https://creaturebox1.github.io/Future-Funk-Central/WebsiteComponents/header.html"); 
-            $("#footer").load("https://creaturebox1.github.io/Future-Funk-Central/WebsiteComponents/footer.html"); 
+            $("#header").load("http://localhost:8080/components/header.html"); 
+            $("#footer").load("http://localhost:8080/components/footer.html"); 
         });
     </script>
 
@@ -36,10 +36,10 @@
         <h1>BROWSE</h1>
 
         <div class="centeredElement">
-            <form action="" method="get">
-                Artist: <input class="dbform" type="text" name="a" size="23" value=""> 
-                Song: <input class="dbform" type="text" name="t" size="23" value=""> 
-                <input class="dbform3" type="submit" value="Search">
+            <form action="/browse" method="post">
+                Artist: <input type="text" name="artistSearchText" id="artistSearchText" size="23" value=""> 
+                Song: <input type="text" name="songSearchText" id="songSearchText" size="23" value=""> 
+                <input type="submit" value="Search">
             </form>
 
             <div class="spacerSmall"></div>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Funk Central</title>
+    <link href="http://localhost:8080/css/pagesContent.css" rel="stylesheet">
+
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+    </script>
+    
+    <script> 
+        $(function(){
+            $("#header").load("http://localhost:8080/components/header.html"); 
+            $("#footer").load("http://localhost:8080/components/footer.html"); 
+        });
+    </script>
+
+    <style>
+        p{
+            font-size: 1.2vw;
+        }
+
+        .content {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class = "content">
+        <div class="spacerSmall"></div>
+        
+        <h1>FUTURE FUNK RADIO</h1>
+
+        <div class="spacerLarge"></div>
+        
+        <div class="centeredElement">
+            <p>Real Love Music Zeno FM:</p>
+            <audio controls>
+                <source src="https://stream.zeno.fm/48533y95cnruv">
+                Your browser does not support the audio element.
+              </audio> 
+        </div>
+        
+    </div>
+
+    <div id="footer"></div>
+</body>
+</html>

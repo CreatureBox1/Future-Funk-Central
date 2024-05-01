@@ -4,39 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Future Funk Central</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://creaturebox1.github.io/Future-Funk-Central/CSS/styleSheet.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://localhost:8080/public/css/stylesheet.css" rel="stylesheet">
 </head>
 
 <body>
     <header class="sticky">
         <div class="navbar">
             <span class="nav-element-container" id="navbar-title-container">
-                <a id="navbar-title" href="https://creaturebox1.github.io/Future-Funk-Central/index.html"><b>FUTURE FUNK CENTRΛL</b></a>
+                <a id="navbar-title" href="http://localhost:8080/index.html"><b>FUTURE FUNK CENTRΛL</b></a>
             </span>
 
             <span class="nav-element-container">
-                <a class="active" href="https://creaturebox1.github.io/Future-Funk-Central/index.html">Home</a>
+                <a class="active" href="http://localhost:8080/index.html">Home</a>
             </span>
 
             <span class="nav-element-container">
-                <a href="https://creaturebox1.github.io/Future-Funk-Central/Pages/browse.html">Browse</a>
+                <a href="http://localhost:8080/browse.html">Browse</a>
             </span>
 
             <span class="nav-element-container">
-                <a href="https://creaturebox1.github.io/Future-Funk-Central/Pages/submission.html">Submit To Database</a>
+                <a href="http://localhost:8080/submission.html">Submit To Database</a>
             </span>
 
             <span class="nav-element-container">
-                <a href="https://creaturebox1.github.io/Future-Funk-Central/Pages/communityLinks.html">Community Links</a>
+                <a href="http://localhost:8080/communityLinks.html">Community Links</a>
             </span>
 
             <span class="nav-element-container">
-                <a href="https://creaturebox1.github.io/Future-Funk-Central/Pages/playlist.html">Playlists</a>
+                <a href="http://localhost:8080/playlist.html">Playlists</a>
             </span>
 
             <span class="nav-element-container">
-                <a href="https://creaturebox1.github.io/Future-Funk-Central/Pages/radio.html">Radios</a>
+                <a href="http://localhost:8080/radio.html">Radios</a>
             </span>
             
             <span class="search-container">
@@ -45,20 +45,20 @@
                   <button type="submit"><img style="width: 17px; height: 17px;" src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg" alt="mg"></button>
                 </form> -->
 
-                <form action="" method="get">
+                <form action="/browse" method="get">
                     <table style="border: 0; display: inline;">
                         <tbody>
                             <tr>
                                 <td style="overflow: hidden;">
                                     <div style="overflow: hidden;" >
-                                        <input name="artistSearchText" placeholder="Enter Artist">
+                                        <input name="artistSearchText" id="artistSearchText" placeholder="Enter Artist">
                                     </div>
                                 </td>
                             </tr>
     
                             <tr>
                                 <td style="overflow: hidden;">
-                                    <div><input name="songSearchText" placeholder="Enter Song"></div>
+                                    <div><input name="songSearchText" id="songSearchText" placeholder="Enter Song"></div>
                                 </td>
                             </tr>
                         </tbody>

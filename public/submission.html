@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Future Funk Central</title>
-    <link href="https://creaturebox1.github.io/Future-Funk-Central/CSS/pagesContent.css" rel="stylesheet">
+    <link href="http://localhost:8080/css/pagesContent.css" rel="stylesheet">
 
     <script
         src="https://code.jquery.com/jquery-3.3.1.js"
@@ -15,8 +15,8 @@
     
     <script> 
         $(function(){
-            $("#header").load("https://creaturebox1.github.io/Future-Funk-Central/WebsiteComponents/header.html"); 
-            $("#footer").load("https://creaturebox1.github.io/Future-Funk-Central/WebsiteComponents/footer.html"); 
+            $("#header").load("http://localhost:8080/components/header.html"); 
+            $("#footer").load("http://localhost:8080/components/footer.html"); 
         });
     </script>
 
@@ -97,7 +97,7 @@
                 If you input a song and artist that already exists, the information will be updated.</p>
             <div class="spacerSmall"></div>
 
-            <form class="submissionForm" action="" method="get">
+            <form class="submissionForm" action="/addSong" method="post">
                 <div>
                     <label for="submitSongName">Song Name:</label>
                     <input type="text" id="submitSongName" name="submitSongName" required>
@@ -114,7 +114,6 @@
                 </div>
 
                 <div id="submitSongErrors"></div>
-                <div id="submitSongPrompt"></div>
     
                 <div>
                     <input id="addSongSubmit" type="submit" value="Submit Song">
@@ -129,7 +128,7 @@
             <p>Submit an artist to the database.</p>
             <div class="spacerSmall"></div>
 
-            <form class="submissionForm" action="" method="get">
+            <form class="submissionForm" action="/addArtist" method="post">
                 <div>
                     <label for="submitArtistName">Artist Name:</label>
                     <input type="text" id="submitArtistName" name="submitArtistName" required>
@@ -146,7 +145,6 @@
                 </div>
 
                 <div id="submitArtistErrors"></div>
-                <div id="submitArtistPrompt"></div>
     
                 <div>
                     <input id="addArtistSubmit" type="submit" value="Submit Song">
@@ -161,7 +159,7 @@
             <p>Given a song and an artist, you can delete the entry from the database.</p>
             <div class="spacerSmall"></div>
 
-            <form class="submissionForm" action="" method="get">
+            <form class="submissionForm" action="/removeSong" method="post">
                 <div>
                     <label for="removeSongName">Song Name:</label>
                     <input type="text" id="removeSongName" name="removeSongName" required>
@@ -173,7 +171,6 @@
                 </div>
 
                 <div id="removeSongErrors"></div>
-                <div id="removeSongPrompt"></div>
 
                 <div>
                     <input id="removeSongSubmit" type="submit" value="Delete">
@@ -188,14 +185,13 @@
             <p>Delete an artist and all their songs.</p>
             <div class="spacerSmall"></div>
 
-            <form class="submissionForm" action="" method="get">
+            <form class="submissionForm" action="/removeArtist" method="post">
                 <div>
                     <label for="removeArtistName">Artist Name:</label>
                     <input type="text" id="removeArtistName" name="removeArtistName" required>
                 </div>
 
                 <div id="removeArtistErrors"></div>
-                <div id="removeArtistPrompt"></div>
 
                 <div>
                     <input id="removeArtistSubmit" type="submit" value="Delete">

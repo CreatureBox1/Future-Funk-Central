@@ -88,7 +88,7 @@ function validateYouTubeUrl(youtubeURL)
 
 document.getElementById("addArtistSubmit").addEventListener("click", function(event) {
   let hasErrors = checkArtistSubmitForm();
-
+  
   if(hasErrors)
   {
     event.preventDefault();
@@ -156,11 +156,12 @@ function checkImageURL(imageURL)
 
 document.getElementById("removeSongSubmit").addEventListener("click", function(event) {
   let hasErrors = checkRemoveSongSubmitForm();
-
+  
   if(hasErrors)
   {
     event.preventDefault();
   }
+
 });
 
 function checkRemoveSongSubmitForm() {
@@ -215,7 +216,7 @@ function checkRemoveSongSubmitForm() {
 
 document.getElementById("removeArtistSubmit").addEventListener("click", function(event) {
   let hasErrors = checkRemoveArtistSubmitForm();
-
+  
   if(hasErrors)
   {
     event.preventDefault();
