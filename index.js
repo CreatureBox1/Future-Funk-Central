@@ -18,6 +18,7 @@ mongoose.connect('mongodb://127.0.0.1/FutureFunkDB').catch((err)=>{
 const songSchema = new mongoose.Schema({
     name: {type:String, required: true},
     youtubeUrl: {type: String, default: ""},
+    albumName: {type:String, default: ""}
 }, {timestamps: true});
 
 //Artist schema
@@ -53,6 +54,7 @@ server.post("/addSong", async(req, res)=>{
     let songName = req.body.submitSongName;
     let artistName = req.body.submitSongArtistName;
     let youtubeUrl = req.body.submitSongYoutubeURL;
+    let albumName = req.body.submitSongYoutubeURL;
 
     try
     {
@@ -152,7 +154,7 @@ server.post("/removeSong", async(req, res)=>{
         {
             artistSearch.songs.pull({name: songName});
     
-            await newArtist.save();
+            await artistSearch.save();
 
             res.render("result-submission", {messageText: `Successfully removed ${songName} from the database!`});
         }
@@ -168,11 +170,11 @@ server.post("/removeSong", async(req, res)=>{
 });
 
 server.post("/removeArtist", async(req, res)=>{
-    const artistName = req.body.removeSongArtistName;
+    const artistName = req.body.removeArtistName;
 
     try 
     {
-        const artistDeletion = await Artist.deleteOne({artist: artistName});
+        const artistSearch = await Artist.findOne({name: artistName});
 
         if(artistDeletion == null)
         {
@@ -180,10 +182,10 @@ server.post("/removeArtist", async(req, res)=>{
         }
         else
         {
+            await Artist.deleteOne({_id: artistSearch._id});
             res.render("result-submission", {messageText: `Successfully removed ${artistName} from the database!`});
         }
 
-        
     } catch (error) {
         console.log(error);
         res.render("result-submission", {messageText: `Error occurred during removal of artist: ${artistName}!`});
