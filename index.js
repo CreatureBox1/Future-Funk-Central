@@ -54,7 +54,7 @@ server.post("/addSong", async(req, res)=>{
     let songName = req.body.submitSongName;
     let artistName = req.body.submitSongArtistName;
     let youtubeUrl = req.body.submitSongYoutubeURL;
-    let albumName = req.body.submitSongYoutubeURL;
+    let album = req.body.submitAlbumName;
 
     try
     {
@@ -65,7 +65,7 @@ server.post("/addSong", async(req, res)=>{
             //Creating a new artist with song
             const newArtist = new Artist({
                 name: artistName,
-                songs:[{name:songName, youtubeUrl: youtubeUrl}]
+                songs:[{name:songName, youtubeUrl: youtubeUrl, albumName: album}]
             });
 
             await newArtist.save();
@@ -81,14 +81,14 @@ server.post("/addSong", async(req, res)=>{
                 if(artistSearch.songs.at(index).name == songName)
                 {
                     songFound = true;
-                    await Artist.updateOne({name: artistName, 'songs.name': songName}, {$set:{'songs.$.youtubeUrl': youtubeUrl}});
+                    await Artist.updateOne({name: artistName, 'songs.name': songName}, {$set:{'songs.$.youtubeUrl': youtubeUrl, 'songs.$.albumName': album}});
                     break;
                 }
             }
     
             if(songFound == false)
             {
-                artistSearch.songs.push({name: songName, youtubeUrl: youtubeUrl});
+                artistSearch.songs.push({name: songName, youtubeUrl: youtubeUrl, albumName: album});
             }
     
             await artistSearch.save();
@@ -176,7 +176,7 @@ server.post("/removeArtist", async(req, res)=>{
     {
         const artistSearch = await Artist.findOne({name: artistName});
 
-        if(artistDeletion == null)
+        if(artistSearch == null)
         {
             res.render("result-submission", {messageText: `Could not find ${artistName} in the the database!`});
         }
