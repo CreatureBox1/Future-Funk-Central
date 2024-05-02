@@ -22,7 +22,7 @@ const songSchema = new mongoose.Schema({
 
 //Artist schema
 const artistSchema = new mongoose.Schema({
-   name: {type: String, required: true},
+    name: {type: String, required: true},
     bio: {type: String, default: "No Bio"},
     imageURL:{type:String, default: ""},
     songs: [songSchema]
@@ -50,67 +50,66 @@ server.post("/browse", (req, res)=>{
 });
 
 server.post("/addSong", async(req, res)=>{
-    const songName = req.body.submitSongName;
-    const artistName = req.body.submitSongArtistName;
-    const youtubeURL = req.body.submitSongYoutubeURL;
+    let songName = req.body.submitSongName;
+    let artistName = req.body.submitSongArtistName;
+    let youtubeUrl = req.body.submitSongYoutubeURL;
 
-    try 
+    try
     {
-        const artistSearch = await Artist.findOne({artist: artistName}, function(err, result) {
-            if (err) throw err;
-        });
+        let artistSearch = await Artist.findOne({name: artistName});
     
-        if(artistSearch.length <= 0)
+        if(artistSearch == null)
         {
             //Creating a new artist with song
             const newArtist = new Artist({
                 name: artistName,
-    
-            });;
-    
+                songs:[{name:songName, youtubeUrl: youtubeUrl}]
+            });
+
             await newArtist.save();
+
+            res.render("result-submission", {messageText: `Successfully added ${songName} to the database!`});
         }
         else
         {
             //Exists
-            const songFound = false;
+            let songFound = false;
+
             for (let index = 0; index < artistSearch.songs.length; index++) {
                 if(artistSearch.songs.at(index).name == songName)
                 {
                     songFound = true;
-                    artistSearch.songs.at(index).youtubeUrl = youtubeURL;
+                    await Artist.updateOne({name: artistName, 'songs.name': songName}, {$set:{'songs.$.youtubeUrl': youtubeUrl}});
                     break;
                 }
             }
     
             if(songFound == false)
             {
-                artistSearch.songs.push({name: songName, youtubeUrl: youtubeURL});
+                artistSearch.songs.push({name: songName, youtubeUrl: youtubeUrl});
             }
     
             await artistSearch.save();
+
+            res.render("result-submission", {messageText: `Successfully updated ${songName}!`});
         }
-
-        res.render("result-submission", {messageText: `Successfully added ${songName} to the database!`});
-
     } catch (error) {
+        res.render("result-submission", {messageText: `Error occurred during submission of song: ${songName}!`});
         console.log(error);
     }
     
 });
 
 server.post("/addArtist", async(req, res)=>{
-    const artistName = req.body.submitArtistName;
-    const artistBio = req.body.submitArtistBio;
-    const artistImageURL = req.body.submitArtistImage;
+    let artistName = req.body.submitArtistName;
+    let artistBio = req.body.submitArtistBio;
+    let artistImageURL = req.body.submitArtistImage;
 
     try 
     {
-        const artistSearch = await Artist.findOne({artist: artistName}, function(err, result) {
-            if (err) throw err;
-        });
+        let artistSearch = await Artist.findOne({name: artistName});
     
-        if(artistSearch.length <= 0)
+        if(artistSearch == null)
         {
             //Creating a new artist with song
             const newArtist = new Artist({
@@ -120,46 +119,51 @@ server.post("/addArtist", async(req, res)=>{
             });;
     
             await newArtist.save();
+
+            res.render("result-submission", {messageText: `Successfully added ${artistName} to the database!`});
         }
         else
         {
             //Exists
             artistSearch.bio = artistBio;
             artistSearch.imageURL = artistImageURL;
-    
+
             await artistSearch.save();
+
+            res.render("result-submission", {messageText: `Successfully updated ${artistName} to the database!`});
         }
-    
-        res.render("result-submission", {messageText: `Successfully added ${artistName} to the database!`});
 
     } catch (error) {
+        res.render("result-submission", {messageText: `Error occurred during submission of artist: ${artistName}!`});
         console.log(error);
     }
     
 });
 
 server.post("/removeSong", async(req, res)=>{
-    const songName = req.body.removeSongName;
-    const artistName = req.body.removeSongArtistName;
+    let songName = req.body.removeSongName;
+    let artistName = req.body.removeSongArtistName;
 
     try 
     {
-        const artistSearch = await Artist.findOne({artist: artistName, 'artist.songs.name': songName}, function(err, result) {
-            if (err) throw err;
-        });
+        let artistSearch = await Artist.findOne({name: artistName});
     
-        if((artistSearch.length <= 0))
+        if(!(artistSearch == null))
         {
-            //Creating a new artist with song
-            artistSearch.songs.remove({name: songName});
+            artistSearch.songs.pull({name: songName});
     
             await newArtist.save();
+
+            res.render("result-submission", {messageText: `Successfully removed ${songName} from the database!`});
         }
-    
-        res.render("result-submission", {messageText: `Successfully removed ${songName} from the database!`});
+        else
+        {
+            res.render("result-submission", {messageText: `Could not find ${songName} in the database!`});
+        }
 
     } catch (error) {
         console.log(error);
+        res.render("result-submission", {messageText: `Errored occurred during removal of song: ${songName}!`});
     }
 });
 
@@ -168,13 +172,21 @@ server.post("/removeArtist", async(req, res)=>{
 
     try 
     {
-        const artistSearch = await Artist.deleteOne({artist: artistName}, function(err, result) {
-            if (err) throw err;
-        });
+        const artistDeletion = await Artist.deleteOne({artist: artistName});
 
-        res.render("result-submission", {messageText: `Successfully removed ${artistName} from the database!`});
+        if(artistDeletion == null)
+        {
+            res.render("result-submission", {messageText: `Could not find ${artistName} in the the database!`});
+        }
+        else
+        {
+            res.render("result-submission", {messageText: `Successfully removed ${artistName} from the database!`});
+        }
+
+        
     } catch (error) {
         console.log(error);
+        res.render("result-submission", {messageText: `Error occurred during removal of artist: ${artistName}!`});
     }
     
 });
