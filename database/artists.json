@@ -1,0 +1,107 @@
+[{
+  "_id": {
+    "$oid": "6632fd3e6ed68e6e0ef460df"
+  },
+  "name": "Night Tempo",
+  "bio": "A Korean producer/DJ who has made a name for himself in the future funk community through reworkings of ‘80s Japanese city pop, Showa-era songs, and Japanese style disco tunes. His re-edit of Mariya Takeuchi’s Plastic Love sparked an internet-based Japanese city pop revival in the U.S. and Europe.",
+  "imageURL": "https://storage.spincoaster.com/media/2023/01/04184841/Night-TempoA_2022.11.jpg",
+  "songs": [
+    {
+      "name": "Night Side",
+      "youtubeUrl": "https://www.youtube.com/watch?v=2fZNP8BrRuo",
+      "albumName": "Nighty Tape 86'",
+      "_id": {
+        "$oid": "6632fd866ed68e6e0ef460e2"
+      },
+      "createdAt": {
+        "$date": "2024-05-02T02:42:14.432Z"
+      },
+      "updatedAt": {
+        "$date": "2024-05-02T02:42:14.432Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-05-02T02:41:02.955Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-02T02:42:14.432Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6632fe016ed68e6e0ef460e5"
+  },
+  "name": "SAINT PEPSI",
+  "bio": "Ryan DeRobertis (Baltimore, Maryland, 2 February 1993), known by his stage name Skylar Spence, but mostly known as Saint Pepsi, is an American electronic musician and singer who grew up in Farmingville and studied music for two years at Boston College.  His project Saint Pepsi started in December 2012, which has been one of the biggest names in Vaporwave both musically and aesthetically.",
+  "imageURL": "https://vaporwave.wiki/images/thumb/5/5a/saintpepsi.jpg/350px-saintpepsi.jpg",
+  "songs": [
+    {
+      "name": "Skylar Spence",
+      "youtubeUrl": "https://www.youtube.com/watch?v=AJA77S11BmM",
+      "albumName": "Hit Vibes",
+      "_id": {
+        "$oid": "6632fe016ed68e6e0ef460e6"
+      },
+      "createdAt": {
+        "$date": "2024-05-02T02:44:17.823Z"
+      },
+      "updatedAt": {
+        "$date": "2024-05-02T02:44:17.823Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-05-02T02:44:17.823Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-02T02:45:47.720Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6632fec06ed68e6e0ef460ec"
+  },
+  "name": "マクロスMACROSS 82-99",
+  "bio": "Alberto Muñoz Calderon (Born: July 28, 1991 (1991-7-28) [Age 30]) better known as MACROSS 82-99 (Or simply Macross) is a Vaporwave and Future Funk artist who is known for albums like A Million Miles Away and SAILORWAVE. A lot of these albums would be published on the label, NEONCITY RECORDS. He is also in a music group called Sailor Team, with other artists well known in the future funk genre.",
+  "imageURL": "https://www.theaudiodb.com/images/media/artist/thumb/xssvqr1581624808.jpg/medium",
+  "songs": [
+    {
+      "name": "Miss Macross",
+      "youtubeUrl": "https://www.youtube.com/watch?v=bVbzZ-azMMo",
+      "albumName": "CHAM!",
+      "_id": {
+        "$oid": "6632ff176ed68e6e0ef460ef"
+      },
+      "createdAt": {
+        "$date": "2024-05-02T02:48:55.800Z"
+      },
+      "updatedAt": {
+        "$date": "2024-05-02T02:48:55.800Z"
+      }
+    },
+    {
+      "name": "『82.99 F.M』",
+      "youtubeUrl": "https://www.youtube.com/watch?v=ez5WWFdyWxA",
+      "albumName": "A Million Miles Away",
+      "_id": {
+        "$oid": "6632ff856ed68e6e0ef460f3"
+      },
+      "createdAt": {
+        "$date": "2024-05-02T02:50:45.178Z"
+      },
+      "updatedAt": {
+        "$date": "2024-05-02T02:50:45.178Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-05-02T02:47:28.749Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-02T02:50:45.178Z"
+  },
+  "__v": 2
+}]
