@@ -41,8 +41,6 @@
                     if (link.getAttribute("name") == bodyId) 
                     {
                         link.classList.add("active");
-                        console.log("FOUND!");
-                        test = true;
                         break;
                     }
                 }
@@ -51,6 +49,8 @@
             $("#footer").load("http://localhost:8080/components/footer.html"); 
         });
     </script> 
+
+    <script src="http://localhost:8080/js/indexDatabaseLoad.js" defer></script>
 </head>
 
 <body id="home">
