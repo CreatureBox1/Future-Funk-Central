@@ -39,12 +39,142 @@ server.listen(portNumber, ()=>{
 server.post("/browse", (req, res)=>{
     try 
     {
-        //Get database JSON and iterate for results
-        // const songResults = ;
-        // const artistResults = ;
-        // res.render("browse", {songs: songResults, artists:artistResults});
-        res.render("browse");
-    } 
+        //song name and artist name for database parsing
+        let songName = req.body.songSearchText;
+        let artistName = req.body.artistSearchText;
+
+        let maxSearchResultsCounter = 10;
+
+        fetch('http://localhost:8080/database/artists.json')
+        .then(res => res.json())
+        .then((data) => {
+            const searchResults = [];
+
+            if((songName == undefined || songName == "") && 
+            (artistName == undefined || artistName == ""))
+            {
+                for (let i = 0; i < data.length; i++) {                    
+                    for (let j = 0; j < data[i].songs.length; j++) {
+                        if(maxSearchResultsCounter > 0)
+                        {
+                            searchResults.push({
+                                artist: data[i],
+                                song: data[i].songs[j]
+                            });
+
+                            maxSearchResultsCounter--;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    if(maxSearchResultsCounter <= 0)
+                    {
+                        break;
+                    }
+                }
+            }
+            else if(!(songName == "" || songName == undefined) && (artistName == "" || artistName == undefined))
+            {
+                for (let i = 0; i < data.length; i++) {                    
+                    for (let j = 0; j < data[i].songs.length; j++) {
+
+                        let searchedSongNameText = data[i].songs[j].name.toLowerCase();
+                        let lowercaseSongText = songName.toLowerCase();
+
+                        if(searchedSongNameText.includes(lowercaseSongText))
+                        {
+                            searchResults.push({
+                                artist: data[i],
+                                song: data[i].songs[j]
+                            });
+                            maxSearchResultsCounter--;
+                        }
+
+                        if(maxSearchResultsCounter <= 0)
+                        {
+                            break;
+                        }
+                    }
+
+                    if(maxSearchResultsCounter <= 0)
+                    {
+                        break;
+                    }
+                }
+            }
+            else if((songName == "" || songName == undefined) && !(artistName == "" || artistName == undefined))
+            {
+                for (let i = 0; i < data.length; i++) {
+                    let queryArtistName = data[i].name.toLowerCase();
+                    let lowercaseArtistNameText = artistName.toLowerCase();
+                    
+                    if(queryArtistName.includes(lowercaseArtistNameText))
+                    {
+                        for (let j = 0; j < data[i].songs.length; j++) {    
+
+                            searchResults.push({
+                                artist: data[i],
+                                song: data[i].songs[j]
+                            });
+
+                            maxSearchResultsCounter--;
+
+                            if(maxSearchResultsCounter <= 0)
+                            {
+                                break;
+                            }
+                        }
+                    }
+
+                    if(maxSearchResultsCounter <= 0)
+                    {
+                        break;
+                    }
+                }
+            }
+            else if(!(songName == "" || songName == undefined) && !(artistName == "" || artistName == undefined))
+            {
+                for (let i = 0; i < data.length; i++) {
+                    let queryArtistName = data[i].name.toLowerCase();
+                    let lowercaseArtistNameText = artistName.toLowerCase();
+                    
+                    if(queryArtistName.includes(lowercaseArtistNameText))
+                    {
+                        for (let j = 0; j < data[i].songs.length; j++) {
+
+                            let searchedSongNameText = data[i].songs[j].name.toLowerCase();
+                            let lowercaseSongText = songName.toLowerCase();
+    
+                            if(searchedSongNameText.includes(lowercaseSongText))
+                            {
+                                searchResults.push({
+                                    artist: data[i],
+                                    song: data[i].songs[j]
+                                });
+                                maxSearchResultsCounter--;
+                            }
+
+                            if(maxSearchResultsCounter <= 0)
+                            {
+                                break;
+                            }
+                        }
+                    }
+
+                    if(maxSearchResultsCounter <= 0)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            res.render("browse", {searchedSongName: songName, searchedArtistName: artistName, searchData: searchResults});
+
+        }).catch((err) => {console.log(err);});
+    }
     catch (err) {
         console.log(err);
     }

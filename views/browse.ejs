@@ -36,7 +36,23 @@
 
     <style>
         li{
-            padding-bottom: 5px;
+            padding-bottom: 10px;
+        }
+
+        .content{
+            height: 100%;
+        }
+
+        .browseLink {
+            text-decoration: underline;
+	        vertical-align: middle;
+            color: black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size:1.5vmin;
+        }
+
+        .browseLink:hover {
+            color: #613a69;
         }
     </style>
 </head>
@@ -51,15 +67,15 @@
 
         <div class="centeredElement">
             <form action="/browse" method="post">
-                Artist: <input type="text" name="artistSearchText" id="artistSearchText" size="23" value=""> 
-                Song: <input type="text" name="songSearchText" id="songSearchText" size="23" value=""> 
+                Artist: <input type="text" name="artistSearchText" id="artistSearchText" size="23" value=<%=searchedArtistName%> > 
+                Song: <input type="text" name="songSearchText" id="songSearchText" size="23" value=<%=searchedSongName%> > 
                 <input type="submit" value="Search">
             </form>
 
             <div class="spacerSmall"></div>
 
             <div>
-                <p id="resultCounterText"><b>0 Result(s)</b></p>
+                <p id="resultCounterText"><b><%=searchData.length%> Result(s)</b></p>
             </div>
 
             <div class="spacerSmall"></div>
@@ -67,7 +83,14 @@
 
         <div style="margin-left: 20%; margin-right: auto;">
             <ul id="searchResultList">
-                <!-- <li><a href="">Test</a></li> -->
+                <%searchData.forEach((searchResult)=>{%>
+                    <li>
+                        <form style="display: block; cursor: pointer;" action="/browse" method="post">
+                            <input type="hidden" name="name" value="value"/>
+                            <a class="browseLink" onclick="this.parentNode.submit();"><b><%=searchResult.artist.name%> - <%=searchResult.song.name%></b></a>
+                        </form>
+                    </li>
+                <%});%>
             </ul>
         </div>
 
