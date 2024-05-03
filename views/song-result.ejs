@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +11,8 @@
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous">
     </script>
-    
-    <script>
+
+    <script> 
         $(function(){
             $("#header").load("http://localhost:8080/components/header.html", ()=>{
 
@@ -29,21 +28,17 @@
                     }
                 }
             }); 
-            
+
             $("#footer").load("http://localhost:8080/components/footer.html"); 
         });
     </script>
 
     <style>
-        li{
-            padding-bottom: 10px;
-        }
-
         .content{
             height: 100%;
         }
 
-        .browseLink {
+        .artistLink {
             text-decoration: underline;
 	        vertical-align: middle;
             color: black;
@@ -51,7 +46,7 @@
             font-size:1.5vmin;
         }
 
-        .browseLink:hover {
+        .artistLink:hover {
             color: #613a69;
         }
     </style>
@@ -61,42 +56,32 @@
     <div id="header"></div>
 
     <div class = "content">
-        <div class="spacerSmall"></div>
-
-        <h1>BROWSE</h1>
-
+        <h1><%=songData.name%></h1>
+        
         <div class="centeredElement">
-            <form action="/browse" method="post">
-                Artist: <input type="text" name="artistSearchText" id="artistSearchText" size="23" value=<%=searchedArtistName%> > 
-                Song: <input type="text" name="songSearchText" id="songSearchText" size="23" value=<%=searchedSongName%> > 
-                <input type="submit" value="Search">
+            <form style="display: block; cursor: pointer;" action="/artistInfo" method="post">
+                <input type="hidden" name="artistClicked" value="<%=artistData.name%>"/>
+                <a class="artistLink" onclick="this.parentNode.submit();"><b>By <%=artistData.name%></b></a>
             </form>
-
             <div class="spacerSmall"></div>
-
-            <div>
-                <p id="resultCounterText"><b><%=searchData.length%> Result(s)</b></p>
-            </div>
-
-            <div class="spacerSmall"></div>
+    
+            <%if(!(songData.albumName == "")){%>
+            <div><b>Album: <%=songData.albumName%></b></div>
+            <div class="spacerLarge"></div>
+            <%}%>
         </div>
 
-        <div style="margin-left: 20%; margin-right: auto;">
-            <ul id="searchResultList">
-                <%searchData.forEach((searchResult)=>{%>
-                    <li>
-                        <form style="display: block; cursor: pointer;" action="/songInfo" method="post">
-                            <input type="hidden" name="artistClicked" value="<%=searchResult.artist.name%>"/>
-                            <input type="hidden" name="songClicked" value="<%=searchResult.song.name%>"/>
-                            <a class="browseLink" onclick="this.parentNode.submit();"><b><%=searchResult.artist.name%> - <%=searchResult.song.name%></b></a>
-                        </form>
-                    </li>
-                <%});%>
-            </ul>
-        </div>
+        <%if(!(songData.youtubeUrl == "")){%>
+        <iframe width="560" height="315" 
+            src="<%=songData.youtubeUrl%>"
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+        <%}%>
 
     </div>
 
     <div id="footer"></div>
 </body>
+
 </html>

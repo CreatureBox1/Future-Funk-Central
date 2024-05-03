@@ -180,6 +180,40 @@ server.post("/browse", (req, res)=>{
     }
 });
 
+server.post("/songInfo", (req, res)=>{
+    let songName = req.body.songClicked;
+    let artistName = req.body.artistClicked;
+
+    fetch('http://localhost:8080/database/artists.json')
+        .then(res => res.json())
+        .then((data) => {
+
+            let artistDataFound;
+            let songDataFound;
+            
+            for (let i = 0; i < data.length; i++) {           
+                if(data[i].name == artistName)
+                {
+                    for (let j = 0; j < data[i].songs.length; j++) {
+                        if(data[i].songs[j].name == songName)
+                        {
+                            artistDataFound = data[i];
+                            songDataFound = data[i].songs[j];
+                            break;
+                        }
+                    }
+                }
+
+                if(!(songDataFound == undefined))
+                {
+                    break;
+                }
+            }
+
+            res.render("song-result", {songData: songDataFound, artistData: artistDataFound});
+        }).catch((err) => {console.log(err);});
+});
+
 server.post("/addSong", async(req, res)=>{
     let songName = req.body.submitSongName;
     let artistName = req.body.submitSongArtistName;
@@ -273,8 +307,8 @@ server.post("/addArtist", async(req, res)=>{
 });
 
 server.post("/removeSong", async(req, res)=>{
-    let songName = req.body.removeSongName;
-    let artistName = req.body.removeSongArtistName;
+    let songName = JSON.parse(req.body.removeSongName);
+    let artistName = JSON.parse(req.body.removeSongArtistName);
 
     try 
     {

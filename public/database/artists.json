@@ -8,7 +8,7 @@
   "songs": [
     {
       "name": "Night Side",
-      "youtubeUrl": "https://www.youtube.com/watch?v=2fZNP8BrRuo",
+      "youtubeUrl": "https://www.youtube.com/embed/2fZNP8BrRuo",
       "albumName": "Nighty Tape 86'",
       "_id": {
         "$oid": "6632fd866ed68e6e0ef460e2"
@@ -39,7 +39,7 @@
   "songs": [
     {
       "name": "Skylar Spence",
-      "youtubeUrl": "https://www.youtube.com/watch?v=AJA77S11BmM",
+      "youtubeUrl": "https://www.youtube.com/embed/AJA77S11BmM",
       "albumName": "Hit Vibes",
       "_id": {
         "$oid": "6632fe016ed68e6e0ef460e6"
@@ -70,7 +70,7 @@
   "songs": [
     {
       "name": "Miss Macross",
-      "youtubeUrl": "https://www.youtube.com/watch?v=bVbzZ-azMMo",
+      "youtubeUrl": "https://www.youtube.com/embed/bVbzZ-azMMo",
       "albumName": "CHAM!",
       "_id": {
         "$oid": "6632ff176ed68e6e0ef460ef"
@@ -84,7 +84,7 @@
     },
     {
       "name": "『82.99 F.M』",
-      "youtubeUrl": "https://www.youtube.com/watch?v=ez5WWFdyWxA",
+      "youtubeUrl": "https://www.youtube.com/embed/ez5WWFdyWxA",
       "albumName": "A Million Miles Away",
       "_id": {
         "$oid": "6632ff856ed68e6e0ef460f3"
