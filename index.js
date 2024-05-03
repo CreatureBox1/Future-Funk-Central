@@ -240,6 +240,8 @@ server.post("/addSong", async(req, res)=>{
     let artistName = req.body.submitSongArtistName;
     let youtubeUrl = req.body.submitSongYoutubeURL;
     let album = req.body.submitAlbumName;
+    
+    let embedYoutubeUrl = "https://www.youtube.com/embed/" + youtubeUrl.substring(youtubeUrl.indexOf("?v=") + 3);
 
     try
     {
@@ -250,7 +252,7 @@ server.post("/addSong", async(req, res)=>{
             //Creating a new artist with song
             const newArtist = new Artist({
                 name: artistName,
-                songs:[{name:songName, youtubeUrl: youtubeUrl, albumName: album}]
+                songs:[{name:songName, youtubeUrl: embedYoutubeUrl, albumName: album}]
             });
 
             await newArtist.save();
@@ -266,14 +268,14 @@ server.post("/addSong", async(req, res)=>{
                 if(artistSearch.songs.at(index).name == songName)
                 {
                     songFound = true;
-                    await Artist.updateOne({name: artistName, 'songs.name': songName}, {$set:{'songs.$.youtubeUrl': youtubeUrl, 'songs.$.albumName': album}});
+                    await Artist.updateOne({name: artistName, 'songs.name': songName}, {$set:{'songs.$.youtubeUrl': embedYoutubeUrl, 'songs.$.albumName': album}});
                     break;
                 }
             }
     
             if(songFound == false)
             {
-                artistSearch.songs.push({name: songName, youtubeUrl: youtubeUrl, albumName: album});
+                artistSearch.songs.push({name: songName, youtubeUrl: embedYoutubeUrl, albumName: album});
             }
     
             await artistSearch.save();
