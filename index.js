@@ -214,6 +214,27 @@ server.post("/songInfo", (req, res)=>{
         }).catch((err) => {console.log(err);});
 });
 
+server.post("/artistInfo", (req, res)=>{
+    let artistName = req.body.artistClicked;
+
+    fetch('http://localhost:8080/database/artists.json')
+        .then(res => res.json())
+        .then((data) => {
+
+            let artistDataFound;
+            
+            for (let i = 0; i < data.length; i++) {           
+                if(data[i].name == artistName)
+                {
+                    artistDataFound = data[i];
+                    break;
+                }
+            }
+
+            res.render("artist-result", {artistData: artistDataFound});
+        }).catch((err) => {console.log(err);});
+});
+
 server.post("/addSong", async(req, res)=>{
     let songName = req.body.submitSongName;
     let artistName = req.body.submitSongArtistName;

@@ -34,7 +34,7 @@
     </script>
 
     <style>
-        .artistLink {
+        .songLink {
             text-decoration: underline;
 	        vertical-align: middle;
             color: black;
@@ -42,7 +42,7 @@
             font-size:1.5vmin;
         }
 
-        .artistLink:hover {
+        .songLink:hover {
             color: #613a69;
         }
     </style>
@@ -52,28 +52,35 @@
     <div id="header"></div>
 
     <div class = "content">
-        <h1><%=songData.name%></h1>
+        <h1><%=artistData.name%></h1>
+
+        <%if(!(artistData.imageURL == "")){%>
+            <div class="centeredElement">
+                <img src="<%=artistData.imageURL%>" alt="artist image" style="height: 10vw; width: 10vw;">
+            </div>
+        <%}%>
+
+        <div class="spacerSmall"></div>
         
-        <div class="centeredElement">
-            <form style="display: block; cursor: pointer;" action="/artistInfo" method="post">
-                <input type="hidden" name="artistClicked" value="<%=artistData.name%>"/>
-                <a class="artistLink" onclick="this.parentNode.submit();"><b>By <%=artistData.name%></b></a>
-            </form>
-            <div class="spacerSmall"></div>
-    
-            <%if(!(songData.albumName == "")){%>
-            <div><b>Album: <%=songData.albumName%></b></div>
+        <div class="centeredElement">  
+            <div><b>Bio: <%=artistData.bio%></b></div>
             <div class="spacerLarge"></div>
-            <%}%>
         </div>
 
-        <%if(!(songData.youtubeUrl == "")){%>
-        <iframe width="560" height="315" 
-            src="<%=songData.youtubeUrl%>"
-            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-        </iframe>
-        <%}%>
+        <div class="centeredElement">
+            <%if(artistData.songs.length > 0){%>
+                <h3>Songs:</h3>
+                <div class="spacerSmall"></div>
+                <%artistData.songs.forEach((song)=>{%>
+                    <form style="display: block; cursor: pointer;" action="/songInfo" method="post">
+                        <input type="hidden" name="artistClicked" value="<%=artistData.name%>"/>
+                        <input type="hidden" name="songClicked" value="<%=song.name%>"/>
+                        <a class="songLink" onclick="this.parentNode.submit();"><b><%=song.name%></b></a>
+                    </form>
+                    <div class="spacerSmall"></div>
+                <%});%>
+            <%}%>
+        </div>
 
     </div>
 
